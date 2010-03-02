@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+COMMIT_MSG_PATH = '/tmp/commit-msg.txt'
+if File.exist?(COMMIT_MSG_PATH)
+  require 'rubygems'
+  gem 'rubyzilla', '~> 0.1.1'
+  require 'rubyzilla'
+  require 'git'
+
+  PROJECT = 'zumo_server'
+  USER = 'davidzh'
+  BUGZILLA_EMAIL = 'you@zecter.com'
+  BUGZILLA_PW = 'password'
+
+  g = Git.open('./')
+  commit_id = g.object('HEAD').sha
+  commit_url = "https://github.com/#{USER}/#{PROJECT}/commit/#{commit_id}"
+  bz = Rubyzilla::Bugzilla.new('https://wush.net/bugzilla/zumodrive/xmlrpc.cgi')
+  bz.login(BUGZILLA_EMAIL, BUGZILLA_PW)
+  commit_msg = '' 
+  File.open(COMMIT_MSG_PATH) { |f| commit_msg = f.read }
+  File.delete(COMMIT_MSG_PATH)
+  commit_msg.scan(/\#([\d]+)/).each do |bug_id|
+    bug = bz.bug(bug_id[0].to_i)
+    puts "Updating bug #{bug_id} -- #{bug.summary}"
+    bug.add_comment(commit_url)
+  end
+end
