@@ -8,7 +8,7 @@ To install the bugzilla updater:
 To use the bugzilla updater:
 
 Enter the bug number that corresponds to your commit somewhere in the commit message, like this:
-Fixing a bug blah #1234
+git commit -a -m "Fixing a bug blah #1234"
 
 PLEASE NOTE:
 
