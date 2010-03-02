@@ -2,7 +2,7 @@ To install the bugzilla updater:
 
 1. sudo gem install rubyzilla-awt
 2. sudo gem install git
-3. Copy post-commit and commit-msg into .git/hooks
+3. Copy post-commit and commit-msg into .git/hooks and make them executable
 4. Edit bugzilla username, pw, and github project in commit-msg
 
 To use the bugzilla updater:
