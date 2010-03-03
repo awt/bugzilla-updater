@@ -10,6 +10,21 @@ To use the bugzilla updater:
 Enter the bug number that corresponds to your commit somewhere in the commit message, like this:
 git commit -a -m "Fixing a bug blah #1234"
 
+
+FAQ:
+Q: What if I want to make an incremental commit, but I'm not ready to update the ticket?
+A: There are a several of options in this case.  
+
+1.  You can go ahead and commit, leaving out the bug #,
+and later rebase your incremental commits into a single commit with the bug #.
+
+2.  You can make a commit without the bug #, and make additional incremental commits
+using the --amend option to the git commit command. When you are ready to update the bug,
+you can use the --amend option one last time and add the bug # to the commit message.
+
+3. Go ahead and commit with the bug # in the commit. It's ok if there are several commits
+associated with a bug, just as long as they all show up in the bug's comments.
+
 PLEASE NOTE:
 
-Your commit id won't be visible in github until you push to github.
+Your commit ids won't be visible in github until you push to github.

@@ -3,7 +3,7 @@
 COMMIT_MSG_PATH = '/tmp/commit-msg.txt'
 if File.exist?(COMMIT_MSG_PATH)
   require 'rubygems'
-  gem 'rubyzilla', '~> 0.1.1'
+  #gem 'rubyzilla', '~> 0.1.1'
   require 'rubyzilla'
   require 'git'
 
