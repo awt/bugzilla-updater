@@ -17,6 +17,7 @@ A: There are a several of options in this case.
 
 1.  You can go ahead and commit, leaving out the bug #,
 and later rebase your incremental commits into a single commit with the bug #.
+Here's how you do this: http://blog.madism.org/index.php/2007/09/09/138-git-awsome-ness-git-rebase-interactive
 
 2.  You can make a commit without the bug #, and make additional incremental commits
 using the --amend option to the git commit command. When you are ready to update the bug,
